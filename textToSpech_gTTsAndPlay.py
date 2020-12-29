@@ -7,7 +7,7 @@ pip install playsound
 """
 
 # import
-from gtts import gTTS # gTTs
+from gtts import gTTS # gTTS
 from playsound import playsound # playsound
 
 # Assign Text
@@ -17,7 +17,7 @@ myText = "I am al mamun"
 tts = gTTS(myText, lang="en")
 
 # Save Txt as Audio
-tts.save('textToSpech_gTTsAndPlay.mp3')
+tts.save('textToSpech_gTTSandPlay.mp3')
 
 # playing sound
-playsound('textToSpech_gTTsAndPlay.mp3')
+playsound('textToSpech_gTTSandPlay.mp3')
