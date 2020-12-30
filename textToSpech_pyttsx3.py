@@ -25,7 +25,7 @@ myText = "I am al mamun"
 engine.say(myText)
 
 # Saving audio file to media folder as output.mp3 name
-engine.save_to_file(myText, 'textToSpech_pyttsx3.mp3')
+engine.save_to_file(myText, 'media/textToSpech_pyttsx3.mp3')
 
 # End
 engine.runAndWait()
