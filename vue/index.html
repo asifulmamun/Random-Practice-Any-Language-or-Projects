@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- vue install -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue App</title>
+</head>
+<body>
+    
+    <!-- myapp 1 -->
+    <div id="myap">
+        <p>Hello {{mytext1}}</p>
+        <p>Hello {{mytext2}}</p>
+    </div>
+
+    <!-- myapp 2 -->
+    <div class="classAp">
+        <p>Hello {{mytext1}}</p>
+        <p>Hello {{mytext2}}</p>
+    </div>
+
+<!-- input -->
+<div id="inputText">
+    <input type="text" name="name" id="" v-on:input="changeTitile">
+    <p>You have inputed: {{inputed}}</p>
+</div>
+
+    <script>
+        // input
+        new Vue({
+            el: "#inputText",
+            data: {
+                inputed: 'No inputed'
+            },
+            methods: {
+                changeTitile: function (event) {
+                    this.inputed = event.target.value;
+                }
+            }
+        });
+
+        // myapp 1
+        new Vue({
+            el: "#myap",
+            data: {
+                mytext1: 'World',
+                mytext2: 'Duniya',
+            }
+        });
+
+        // myapp 2
+        new Vue({
+            el: ".classAp",
+            data: {
+                mytext1: 'World 2',
+                mytext2: 'Duniya 2',
+            }
+        });
+
+    </script>
+
+</body>
+</html>

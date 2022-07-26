@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Currency API</title>
+
+    <link rel="shortcut icon" href="#">
+
+</head>
+
+<body>
+
+    <form id="currencyConverter" action="">
+        <select name="fromCur" id="from">
+            <option id="fromValue" value=""></option>
+        </select>
+        <select name="toCur" id="to"></select>
+
+    </form>
+
+
+
+    <div id="result">result</div>
+
+
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- custom js/jquery -->
+    <script>
+        // var currency_api = 'http://data.fixer.io/api/latest?access_key=8397780e9f43fb21178ef6f74fff4675';
+
+        $.ajax({
+            // live data
+            // url: 'http://data.fixer.io/api/latest?access_key=8397780e9f43fb21178ef6f74fff4675',
+            
+            // local data
+            url: 'https://raw.githubusercontent.com/asifulmamun/data/master/json/noNeedOrPractice/temp_currency_data_from_fixer.json',
+            dataType: 'json',
+            method: 'GET',
+            success: function (data) {
+
+                var keyData = data.rates;
+                Object.keys(keyData).forEach(function (key) {
+                    // document.getElementById('from').innerHTML = '<option id="fromValue" value="">' + key + '</option>';
+
+                    document.forms.currencyConverter.value = "img";
+                })
+                // var re = jQuery.parseJSON(keyData);
+
+                // Rate Showing
+                var bdtRateFromUSD = data.rates.BDT / data.rates.USD;
+                console.log('USD 1 = BDT:', bdtRateFromUSD);
+
+                console.log('Base', data.base, 'Rate:', data.rates.EUR);
+                console.log('BDT:', data.rates.BDT);
+                console.log('USD:', data.rates.USD);
+
+
+            },
+            error: function () {
+                // error message
+            }
+        });/* ajax */
+
+    </script>
+</body>
+
+</html>
