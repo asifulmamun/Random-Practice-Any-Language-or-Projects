@@ -51,9 +51,9 @@ def main():
         # Add more messages as needed
     ]
 
-    start_delay = 10  # seconds
+    start_delay = 5  # seconds
     iteration_delay = 100
-    message_delay = 0.5  # seconds
+    message_delay = 0.1  # seconds
 
     print(f"Program will start in {start_delay} seconds. Move the mouse to stop the script.")
     time.sleep(start_delay)
