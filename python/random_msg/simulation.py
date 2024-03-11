@@ -5,6 +5,7 @@ import threading
 import tkinter as tk
 from tkinter import messagebox
 from messages import text_list
+from command import conditions
 
 def show_start_delay_message(duration):
     root = tk.Tk()
@@ -33,9 +34,12 @@ def check_mouse_movement(stop_flag):
         last_position = current_position
 
 def main():
-    start_delay = 10  # seconds
-    iteration_delay = 100
-    message_delay = 0.5  # seconds
+    start_delay = conditions['start_delay']
+    iteration_delay = conditions['iteration_delay']
+    message_delay = conditions['message_delay']
+    msg_count = conditions['msg_count']
+    msg_type_system = conditions['msg_type_system']
+    msg_type_system_delay = conditions['msg_type_system_delay']
 
     show_start_delay_message(start_delay)
     time.sleep(start_delay)
@@ -44,7 +48,7 @@ def main():
     mouse_thread = threading.Thread(target=check_mouse_movement, args=(stop_flag,))
     mouse_thread.start()
 
-    for i in range(1, 1001):
+    for i in range(1, msg_count + 1):
         if stop_flag.is_set():
             break
 
@@ -52,12 +56,15 @@ def main():
 
         pyautogui.typewrite(random_text)
         pyautogui.press('enter')
+        
+        if msg_type_system == 'random':
+            time.sleep(random.uniform(0.1, msg_type_system_delay))
+        elif msg_type_system == 'state':
+            time.sleep(message_delay)
 
-        if i % iteration_delay == 0 and i != 1000:
-            print(f"\nPausing for 30 seconds (Iteration: {i})...")
-            time.sleep(30)
+        if i % iteration_delay == 0 and i != msg_count:
+            print(f"\nPausing for {msg_type_system_delay} seconds (Iteration: {i})...")
 
-        time.sleep(message_delay)
 
     stop_flag.set()
     mouse_thread.join()
